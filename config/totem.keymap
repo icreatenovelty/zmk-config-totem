@@ -27,7 +27,7 @@
     quick-tap-ms = <100>;
     global-quick-tap;
     flavor = "balanced";
-    tapping-term-ms = <170>;
+    tapping-term-ms = <200>;
 };
 
 / {
@@ -76,6 +76,8 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 4 10 11 12 13 14 20 21 22 23 24 25 32 33 3 2 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34>;
             quick-tap-ms = <150>;
+            flavor = "balanced";
+            require-prior-idle-ms = <125>;
         };
 
         HMShiftL: HMShiftL {
@@ -89,6 +91,8 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 35 36 37>;
             quick-tap-ms = <150>;
+            require-prior-idle-ms = <125>;
+            flavor = "balanced";
         };
 
         HMRowR: HMRowR {
