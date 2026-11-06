@@ -71,10 +71,11 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 4 10 11 12 13 14 20 21 22 23 24 25 32 33 3 2 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 25 32 33 34>;
+            quick-tap-ms = <150>;
         };
 
         HMShiftL: HMShiftL {
@@ -83,10 +84,11 @@
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <250>;
             hold-while-undecided;
             hold-trigger-on-release;
             hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 26 27 28 29 30 31 35 36 37>;
+            quick-tap-ms = <150>;
         };
     };
 
@@ -137,9 +139,9 @@
 
             bindings = <
             &kp ESC                &kp HOME              &kp UP                     &kp END                   &kp KP_DIVIDE              &kp KP_ASTERISK           &kp KP_NUMBER_7              &kp KP_NUMBER_8            &kp KP_NUMBER_9            &kp KP_EQUAL
-            &kp TAB                &kp LEFT              &kp DOWN                   &kp RIGHT                 &kp KP_SUBTRACT            &kp KP_PLUS               &mt RIGHT_SHIFT KP_NUMBER_4  &mt RIGHT_GUI KP_NUMBER_5  &mt RIGHT_ALT KP_NUMBER_6  &mt RCTRL KP_DOT
+            &kp C_AL_CALC          &kp LEFT              &kp DOWN                   &kp RIGHT                 &kp KP_SUBTRACT            &kp KP_PLUS               &mt RIGHT_SHIFT KP_NUMBER_4  &mt RIGHT_GUI KP_NUMBER_5  &mt RIGHT_ALT KP_NUMBER_6  &mt RCTRL KP_DOT
 &kp DELETE  &mt LEFT_CONTROL HASH  &mt LEFT_ALT PAGE_UP  &mt LEFT_COMMAND CAPSLOCK  &mt LEFT_SHIFT PAGE_DOWN  &kp KP_LEFT_PARENTHESIS    &kp KP_RIGHT_PARENTHESIS  &kp KP_NUMBER_1              &kp KP_NUMBER_2            &kp KP_NUMBER_3            &kp COMMA         &kp BACKSPACE
-                                                         &kp C_AL_CALC              &lt 4 RET                 &to 0                      &mkp MB1                  &kp SPACE                    &kp KP_NUMBER_0
+                                                         &kp TAB                    &lt 4 RET                 &to 0                      &mkp MB1                  &kp SPACE                    &kp KP_NUMBER_0
             >;
         };
 
