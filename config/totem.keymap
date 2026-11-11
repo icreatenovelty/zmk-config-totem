@@ -45,9 +45,63 @@
             key-positions = <11 12 13>;
             bindings = <&tog 0>;
         };
+
+        combo_hud {
+            timeout-ms = <50>;
+            key-positions = <20 31>;
+            bindings = <&kp F19>;
+        };
     };
 
     macros {
+
+        mo_num: mo_num {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_param_1to1>,
+                       <&macro_press &mo MACRO_PLACEHOLDER &kp F16>,
+                       <&macro_pause_for_release>,
+                       <&macro_param_1to1>,
+                       <&macro_release &mo MACRO_PLACEHOLDER &kp F16>;
+        };
+
+        mo_sym: mo_sym {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_param_1to1>,
+                       <&macro_press &mo MACRO_PLACEHOLDER &kp F17>,
+                       <&macro_pause_for_release>,
+                       <&macro_param_1to1>,
+                       <&macro_release &mo MACRO_PLACEHOLDER &kp F17>;
+        };
+
+        mo_adj: mo_adj {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&macro_param_1to1>,
+                       <&macro_press &mo MACRO_PLACEHOLDER &kp F18>,
+                       <&macro_pause_for_release>,
+                       <&macro_param_1to1>,
+                       <&macro_release &mo MACRO_PLACEHOLDER &kp F18>;
+        };
+
+        to_nav: to_nav {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 1>, <&kp F20>;
+        };
+
+        to_base: to_base {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0>, <&kp F20>;
+        };
         gif: gif {
             display-name = "giphy";
             compatible = "zmk,behavior-macro";
@@ -65,6 +119,30 @@
     };
 
     behaviors {
+
+        lt_num: lt_num {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_num>, <&kp>;
+        };
+
+        lt_sym: lt_sym {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_sym>, <&kp>;
+        };
+
+        lt_adj: lt_adj {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo_adj>, <&kp>;
+        };
         HMShiftR: HMShiftR {
             compatible = "zmk,behavior-hold-tap";
             label = "HMSHIFTR";
@@ -149,7 +227,7 @@
                   &kp Q            &kp W           &kp E           &kp R              &kp T    &kp Y     &kp U              &kp I                &kp O             &kp P
                   &HMRowL LCTRL A  &HMRowL LALT S  &HMRowL LCMD D  &HMShiftL LSHFT F  &kp G    &kp H     &HMShiftR RSHFT J  &HMRowR LEFT_META K  &HMRowR RALT L    &HMRowR RCTRL SQT
 &mt GLOBE ESCAPE  &kp Z            &kp X           &kp C           &kp V              &kp B    &kp N     &kp M              &mt SEMI COMMA       &mt COLON PERIOD  &kp FSLH           &kp BACKSPACE
-                                                   &lt 3 TAB       &lt 2 RETURN       &to 1    &mkp MB1  &kp SPACE          &mkp MB2
+                                                   &lt_sym 3 TAB       &lt_num 2 RETURN       &to_nav    &mkp MB1  &kp SPACE          &mkp MB2
             >;
         };
 
@@ -173,7 +251,7 @@
             &kp ESC                &kp HOME              &kp UP                     &kp END                   &kp KP_DIVIDE              &kp KP_ASTERISK           &kp KP_NUMBER_7              &kp KP_NUMBER_8            &kp KP_NUMBER_9            &kp KP_EQUAL
             &kp C_AL_CALC          &kp LEFT              &kp DOWN                   &kp RIGHT                 &kp KP_SUBTRACT            &kp KP_PLUS               &mt RIGHT_SHIFT KP_NUMBER_4  &mt RIGHT_GUI KP_NUMBER_5  &mt RIGHT_ALT KP_NUMBER_6  &mt RCTRL KP_DOT
 &kp DELETE  &mt LEFT_CONTROL HASH  &mt LEFT_ALT PAGE_UP  &mt LEFT_COMMAND CAPSLOCK  &mt LEFT_SHIFT PAGE_DOWN  &kp KP_LEFT_PARENTHESIS    &kp KP_RIGHT_PARENTHESIS  &kp KP_NUMBER_1              &kp KP_NUMBER_2            &kp KP_NUMBER_3            &kp COMMA         &kp BACKSPACE
-                                                         &kp TAB                    &lt 4 RET                 &to 0                      &mkp MB1                  &kp SPACE                    &kp KP_NUMBER_0
+                                                         &kp TAB                    &lt_adj 4 RET                 &to_base                      &mkp MB1                  &kp SPACE                    &kp KP_NUMBER_0
             >;
         };
 
@@ -207,7 +285,7 @@
               &kp GRAVE        &kp CAPS     &kp C_AC_DESKTOP_SHOW_ALL_APPLICATIONS  &kp C_AC_DESKTOP_SHOW_ALL_WINDOWS  &kp C_PIP               &kp C_SLEEP           &kp C_REWIND     &kp C_PAUSE           &kp C_FAST_FORWARD     &kp MINUS
               &kp EXCLAMATION  &kp AT_SIGN  &kp HASH                                &kp DOLLAR                         &kp PERCENT             &kp CARET             &kp AMPERSAND    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp EQUAL
 &kp LEFT_ALT  &kp LSHFT        &kp C_MUTE   &kp C_VOL_DN                            &kp C_VOLUME_UP                    &kp C_BRIGHTNESS_DEC    &kp C_BRIGHTNESS_INC  &kp C_PREV       &kp C_PLAY_PAUSE      &kp C_NEXT             &kp BSLH   &kp RIGHT_ALT
-                                            &trans                                  &trans                             &trans                  &kp C_VOICE_COMMAND   &kp C_AC_SEARCH  &mo 4
+                                            &trans                                  &trans                             &trans                  &kp C_VOICE_COMMAND   &kp C_AC_SEARCH  &mo_adj 4
             >;
         };
 
